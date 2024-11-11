@@ -8,11 +8,21 @@ using var channel = await connection.CreateChannelAsync();
 await channel.QueueDeclareAsync(queue: "hello", durable: false, exclusive: false, autoDelete: false,
     arguments: null);
 
-const string message = "Hello World!";
-var body = Encoding.UTF8.GetBytes(message);
+bool running = true;
+while(running)
+{
+
+    Console.WriteLine(" Enter message / q to exit.");
+    string message = Console.ReadLine()!;
+    if (message == "q")
+    {
+        running = false;
+        break;
+    }
+        var body = Encoding.UTF8.GetBytes(message);
 
 await channel.BasicPublishAsync(exchange: string.Empty, routingKey: "hello", body: body);
 Console.WriteLine($" [x] Sent {message}");
 
-Console.WriteLine(" Press [enter] to exit.");
-Console.ReadLine();
+}
+//Console.ReadLine();
