@@ -7,18 +7,17 @@ This is a simple example of how to use RabbitMQ with C#.
 Running RabbitMQ in a docker container is the easiest way to get started. To do this, run the following command in the terminal:
 
 
-```
-- docker run -d --name your_container_name -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
+- ```docker run -d --name your_container_name -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management```
 
-```
 
 To run a slightly better container with the UI you can run the management version:
-```
-- docker run -d --name rabbitmq1 -p 5672:5672 -p 15672:15672 rabbitmq:management
-- login by visiting http://localhost:15672 in a browser:
+
+- ```docker pull rabbitmq:management```
+- ```docker run -d --name rabbitmq1 -p 5672:5672 -p 15672:15672 rabbitmq:management```
+- login by visiting http://localhost:15672 (note this is http and not https!) in a browser:
 	- username: guest 
 	- password: guest
-```
+
 
 ## Creating the projects
 ``` 
